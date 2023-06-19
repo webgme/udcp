@@ -1,0 +1,1 @@
+This folder will be shared with the mongodb so it will serve as a permanent solution for the data storage for the design studios.

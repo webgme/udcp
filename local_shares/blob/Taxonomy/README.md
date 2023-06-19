@@ -1,0 +1,1 @@
+The Taxonomy studio's blob storage.

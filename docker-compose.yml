@@ -1,0 +1,86 @@
+version: '3'
+networks:
+  frontend:
+    driver: bridge
+  database:
+    driver: bridge
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./dockers/nginx.dockerfile
+      args:
+        udcpoption: ${UDCP_OPTION}
+    environment:
+      UDCP_NAME: ${UDCP_NAME}
+      UDPC_PORT: ${UDCP_OPTION}
+    volumes:
+      - ./local_shares/keys:/ssl_certs
+    networks:
+      - frontend
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - cwl
+      - taxonomy
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 5
+        window: 120s
+  cwl:
+    build:
+      context: .
+      dockerfile: ./dockers/cwl.dockerfile
+      args:
+        udcpoption: ${UDCP_OPTION}
+    environment:
+      UDCP_NAME: ${UDCP_NAME}
+      UDPC_PORT: ${UDCP_OPTION}
+    depends_on:
+    - mongo
+    volumes:
+    - ./local_shares/blob/CWL:/usr/app/blob-local-storage
+    networks:
+    - database
+    - frontend
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 10s
+        window: 240s
+  taxonomy:
+    build:
+      context: .
+      dockerfile: ./dockers/taxonomy.dockerfile
+      args:
+        udcpoption: ${UDCP_OPTION}
+    environment:
+      UDCP_NAME: ${UDCP_NAME}
+      UDPC_PORT: ${UDCP_OPTION}
+    depends_on:
+    - mongo
+    volumes:
+    - ./local_shares/blob/Taxonomy:/webgme-taxonomy/blob-local-storage
+    networks:
+    - database
+    - frontend
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 10s
+        window: 240s
+  mongo:
+    image: mongo:3.4.1
+    volumes:
+    - ./local_shares/db:/data/db
+    networks:
+    - database
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 5
+        window: 120s
