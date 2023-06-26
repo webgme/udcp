@@ -21,6 +21,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 8443:8443
     depends_on:
       - cwl
       - taxonomy
@@ -39,6 +40,7 @@ services:
     environment:
       UDCP_NAME: ${UDCP_NAME}
       UDPC_PORT: ${UDCP_OPTION}
+      LEAP_CLI: /usr/app/src/common/
     depends_on:
     - mongo
     volumes:
