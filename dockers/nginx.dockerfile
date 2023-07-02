@@ -5,3 +5,4 @@ ARG udcpoption=default
 RUN rm -r /etc/nginx/conf.d && rm /etc/nginx/nginx.conf
 
 COPY ./config/nginx.${udcpoption}.conf /etc/nginx/nginx.conf
+COPY ./config/static.${udcpoption} /static

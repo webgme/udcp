@@ -75,7 +75,7 @@ services:
         delay: 10s
         window: 240s
   mongo:
-    image: mongo:3.4.1
+    image: mongo:5.0.18
     volumes:
     - ./local_shares/db:/data/db
     networks:

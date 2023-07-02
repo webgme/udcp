@@ -7,6 +7,8 @@ var config = require("./config.webgme"),
 // config.server.port = 8090;
 config.mongo.uri = 'mongodb://mongo:27017/udcp_taxonomy';
 
+config.plugin.allowServerExecution = true;
+
 config.requirejsPaths.react =
   "./src/visualizers/widgets/TagCreator/lib/react.production.min",
   validateConfig(config);

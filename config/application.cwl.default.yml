@@ -1,0 +1,4 @@
+cliclient:
+  taxonomyServiceUrl: "http://taxonomy.localtest"
+  taxonomyProject: "guest+taxonomy"
+  taxonomyBranch: "master"

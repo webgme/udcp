@@ -15,6 +15,8 @@ config.core.overlayShardSize = 100000;
 
 config.seedProjects.defaultProject = 'cwl_base';
 
+config.plugin.allowServerExecution = true;
+
 //removing all seeds but CWL related ones
 const oldbases = config.seedProjects.basePaths;
 config.seedProjects.basePaths = [];
