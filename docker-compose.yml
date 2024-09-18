@@ -89,3 +89,13 @@ services:
         delay: 2s
         max_attempts: 5
         window: 120s
+  janusgraph:
+    image: janusgraph/janusgraph:latest
+    networks:
+    - database
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 5
+        window: 120s
