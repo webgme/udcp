@@ -40,7 +40,7 @@ services:
     environment:
       UDCP_NAME: ${UDCP_NAME}
       UDPC_PORT: ${UDCP_OPTION}
-      LEAP_CLI: /usr/app/src/common/
+      LEAP_CLI: /usr/app/OUTPUT/
     depends_on:
     - mongo
     volumes:
@@ -74,6 +74,9 @@ services:
         condition: any
         delay: 10s
         window: 240s
+      resources:
+        limits:
+          memory: "1g"
   mongo:
     image: mongo:5.0.18
     volumes:
