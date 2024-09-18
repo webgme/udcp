@@ -45,6 +45,7 @@ services:
     - mongo
     volumes:
     - ./local_shares/blob/CWL:/usr/app/blob-local-storage
+    - ./local_shares/token_keys:/webgme_token_keys
     networks:
     - database
     - frontend
@@ -66,6 +67,7 @@ services:
     - mongo
     volumes:
     - ./local_shares/blob/Taxonomy:/webgme-taxonomy/blob-local-storage
+    - ./local_shares/token_keys:/webgme_token_keys
     networks:
     - database
     - frontend
