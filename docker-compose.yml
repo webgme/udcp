@@ -42,13 +42,13 @@ services:
       UDPC_PORT: ${UDCP_OPTION}
       LEAP_CLI: /usr/app/OUTPUT/
     depends_on:
-    - mongo
+      - mongo
     volumes:
-    - ./local_shares/blob/CWL:/usr/app/blob-local-storage
-    - ./local_shares/token_keys:/webgme_token_keys
+      - ./local_shares/blob/CWL:/usr/app/blob-local-storage
+      - ./local_shares/token_keys:/webgme_token_keys
     networks:
-    - database
-    - frontend
+      - database
+      - frontend
     deploy:
       restart_policy:
         condition: any
@@ -64,13 +64,13 @@ services:
       UDCP_NAME: ${UDCP_NAME}
       UDPC_PORT: ${UDCP_OPTION}
     depends_on:
-    - mongo
+      - mongo
     volumes:
-    - ./local_shares/blob/Taxonomy:/webgme-taxonomy/blob-local-storage
-    - ./local_shares/token_keys:/webgme_token_keys
+      - ./local_shares/blob/Taxonomy:/webgme-taxonomy/blob-local-storage
+      - ./local_shares/token_keys:/webgme_token_keys
     networks:
-    - database
-    - frontend
+      - database
+      - frontend
     deploy:
       restart_policy:
         condition: any
@@ -82,9 +82,9 @@ services:
   mongo:
     image: mongo:5.0.18
     volumes:
-    - ./local_shares/db:/data/db
+      - ./local_shares/db:/data/db
     networks:
-    - database
+      - database
     deploy:
       restart_policy:
         condition: on-failure
@@ -93,8 +93,11 @@ services:
         window: 120s
   janusgraph:
     image: janusgraph/janusgraph:latest
+    container_name: janusgraph
+    volumes:
+      - ./local_shares/jvm-11.options:/opt/janusgraph/conf/jvm-11.options
     networks:
-    - database
+      - database
     deploy:
       restart_policy:
         condition: on-failure
