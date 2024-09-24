@@ -99,7 +99,7 @@ services:
     networks:
       - database
     ports:
-    - 3000:3000
+    - 8182:8182
     deploy:
       restart_policy:
         condition: on-failure
