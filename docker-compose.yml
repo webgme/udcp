@@ -98,6 +98,8 @@ services:
       - ./local_shares/jvm-11.options:/opt/janusgraph/conf/jvm-11.options
     networks:
       - database
+    ports:
+    - 3000:3000
     deploy:
       restart_policy:
         condition: on-failure
