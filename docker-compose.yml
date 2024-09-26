@@ -15,7 +15,7 @@ services:
       UDCP_NAME: ${UDCP_NAME}
       UDPC_PORT: ${UDCP_OPTION}
     volumes:
-      - ./local_shares/keys:/ssl_certs
+      - /media/webgmedata/udcp_shares/keys:/ssl_certs
     networks:
       - frontend
     ports:
@@ -44,7 +44,8 @@ services:
     depends_on:
     - mongo
     volumes:
-    - ./local_shares/blob/CWL:/usr/app/blob-local-storage
+    - /media/webgmedata/udcp_shares/blob/CWL:/usr/app/blob-local-storage
+    - /media/webgmedata/udcp_shares/token_keys:/webgme_token_keys
     networks:
     - database
     - frontend
@@ -65,7 +66,8 @@ services:
     depends_on:
     - mongo
     volumes:
-    - ./local_shares/blob/Taxonomy:/webgme-taxonomy/blob-local-storage
+    - /media/webgmedata/udcp_shares/blob/Taxonomy:/webgme-taxonomy/blob-local-storage
+    - /media/webgmedata/udcp_shares/token_keys:/webgme_token_keys
     networks:
     - database
     - frontend
@@ -77,7 +79,7 @@ services:
   mongo:
     image: mongo:5.0.18
     volumes:
-    - ./local_shares/db:/data/db
+    - /media/webgmedata/udcp_shares/db:/data/db
     networks:
     - database
     deploy:
