@@ -92,10 +92,10 @@ services:
         max_attempts: 5
         window: 120s
   janusgraph:
-    image: janusgraph/janusgraph:latest
+    build:
+      context: .
+      dockerfile: ./dockers/janusgraph.dockerfile
     container_name: janusgraph
-    volumes:
-      - ./local_shares/jvm-11.options:/opt/janusgraph/conf/jvm-11.options
     networks:
       - database
     ports:
