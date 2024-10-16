@@ -79,6 +79,18 @@ services:
       resources:
         limits:
           memory: "1g"
+  taxonomy-query:
+    build:
+      context: .
+      dockerfile: ./dockers/taxonomy-query.dockerfile
+      args:
+        udcpoption: ${UDCP_OPTION}
+    environment:
+      UDCP_NAME: ${UDCP_NAME}
+      UDPC_PORT: ${UDCP_OPTION}
+    networks:
+      - database
+      - frontend
   mongo:
     image: mongo:5.0.18
     volumes:
@@ -99,10 +111,4 @@ services:
     networks:
       - database
     ports:
-    - 8182:8182
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 2s
-        max_attempts: 5
-        window: 120s
+      - 8182:8182
