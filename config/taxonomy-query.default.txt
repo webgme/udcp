@@ -7,3 +7,5 @@ WEBGME_TOKEN_KEY_FILE=../webgme-engine/src/server/middleware/auth/EXAMPLE_PRIVAT
 
 RESOLVE_URI_URL=http://localhost:12345/routers/Dashboard/AllLeap%2BMCPyschTaxonomy/tag/1_25_0
 TAXONOMY_PUBLIC_HOST=http://localhost:12345
+
+GREMLIN_END_POINT=ws://localhost:8182/gremlin
