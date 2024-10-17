@@ -5,3 +5,7 @@
 !/local_shares/blob/Taxonomy/README.md
 !/local_shares/token_keys/README.md
 !/local_shares/jvm-11.options
+
+*.log
+*.logs
+/local_archive
