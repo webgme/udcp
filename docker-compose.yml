@@ -1,3 +1,4 @@
+# Use docker compose! Not docker-compose!
 version: '3'
 networks:
   frontend:
@@ -110,7 +111,6 @@ services:
     build:
       context: .
       dockerfile: ./dockers/janusgraph.dockerfile
-    container_name: janusgraph
     networks:
       - database
     ports:
