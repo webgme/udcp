@@ -21,6 +21,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 6443:6443
       - 8443:8443
     depends_on:
       - cwl
@@ -88,6 +89,8 @@ services:
     environment:
       UDCP_NAME: ${UDCP_NAME}
       UDPC_PORT: ${UDCP_OPTION}
+    volumes:
+      - ./local_shares/token_keys:/webgme_token_keys
     networks:
       - database
       - frontend
