@@ -30,7 +30,7 @@ esac
 
 # Execute Docker commands
 echo "Pulling Docker image: $DOCKER_IMAGE"
-docker pull "$DOCKER_IMAGE"
+docker pull $DOCKER_IMAGE
 
 echo "Starting Docker service: $DOCKER_SERVICE"
-docker compose up -d --build "$DOCKER_SERVICE"
+docker compose up -d --build $DOCKER_SERVICE
