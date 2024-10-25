@@ -16,8 +16,8 @@
 # HEAP SETTINGS #
 #################
 
--Xms512m
--Xmx1024m
+-Xms2048m
+-Xmx2048m
 
 
 ########################
@@ -38,7 +38,7 @@
 -XX:+HeapDumpOnOutOfMemoryError
 
 # Per-thread stack size.
--Xss1024k
+-Xss2024k
 
 # Make sure all memory is faulted and zeroed on startup.
 # This helps prevent soft faults in containers and makes
